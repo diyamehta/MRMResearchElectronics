@@ -7,6 +7,8 @@ int buttonState = 0;
 int lastButtonState = 0; 
 long lCnt = 0;
 unsigned long lStart;
+int i = 0;
+
 
 void setup() {
  pinMode(buttonPin, INPUT);
@@ -49,16 +51,21 @@ while( (millis() - lStart) <= 15000)
    digitalWrite(ledPin2, 0);
    digitalWrite(ledPin3, 0);
  }
- if (buttonPushCounter == 1) {
- digitalWrite(ledPin3, 255);
-   digitalWrite(ledPin2, 255);
-   digitalWrite(ledPin1, 255);
-   delay(1000);
-   digitalWrite(ledPin3, 0);
-   digitalWrite(ledPin2,0);
-   digitalWrite(ledPin1,0);
-   delay(1000); }
- else if (buttonPushCounter == 2) {
+ else if (buttonPushCounter == 1) {
+for (int i = 0; i < 255; i++){ 
+  analogWrite(ledPin3, i);
+  analogWrite(ledPin2, i);
+  analogWrite(ledPin1, i);
+    delay(5); 
+  }
+  for (int i = 255; i > 0; i--){ 
+    analogWrite(ledPin3, i);
+    analogWrite(ledPin2, i);
+    analogWrite(ledPin1, i);
+    delay(5);
+  }
+ }
+  else if (buttonPushCounter == 2) {
    digitalWrite(ledPin3, HIGH);
    digitalWrite(ledPin2, HIGH);
    digitalWrite(ledPin1, HIGH);
@@ -101,5 +108,6 @@ for(int i=0;i<=7;i++)
  }
    buttonPushCounter = 0;
  }
- }
 }
+}
+ 
