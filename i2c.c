@@ -10,8 +10,8 @@ void I2C_Master_Init(const unsigned long c)
   SSPCON2 = 0;
   SSPADD = (_XTAL_FREQ/(4*c))-1;
   SSPSTAT = 0;
-  TRISC3 = 1;        //Setting as input as given in data sheet
-  TRISC4 = 1;        //Setting as input as given in data sheet
+  TRISC3 = 1;        //Setting as input as given in datasheet
+  TRISC4 = 1;        //Setting as input as given in datasheet
 }
 
 void I2C_Master_Wait()
